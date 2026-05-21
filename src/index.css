@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    font-feature-settings: 'ss01', 'ss02';
+  }
+  ::selection {
+    @apply bg-accent-pink text-paper;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1600px] px-6 md:px-10 lg:px-16;
+  }
+  .display {
+    @apply font-display uppercase tracking-tightest leading-[0.85];
+  }
+  .label {
+    @apply font-mono text-xs uppercase tracking-widest;
+  }
+  .hairline {
+    @apply border border-ink/90;
+  }
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/noise.svg');
+    background-size: 200px 200px;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .grain-light::before {
+    mix-blend-mode: screen;
+    opacity: 0.18;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
